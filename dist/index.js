@@ -364,18 +364,18 @@ var getCookie = function getCookie(cname) {
 var validateToken = function validateToken() {
   if (!getCookie('token')) {
     redirect();
+  } else {
+    var urlParams = new URLSearchParams(window.location.search);
+    var myParam = urlParams.get('access_token');
+    var jwt = parseJwt(myParam);
+
+    if (jwt.app_displayname === 'apex-simple-ms-login') {
+      setCookie('token', jwt, 1);
+    }
+
+    window.location = APP_URL;
+    document.getElementById('content').style.display = 'block';
   }
-
-  var urlParams = new URLSearchParams(window.location.search);
-  var myParam = urlParams.get('access_token');
-  var jwt = parseJwt(myParam);
-
-  if (jwt.app_displayname === 'apex-simple-ms-login') {
-    setCookie('token', jwt, 1);
-  }
-
-  window.location = APP_URL;
-  document.getElementById('content').style.display = 'block';
 };
 
 var startProcess = function startProcess() {

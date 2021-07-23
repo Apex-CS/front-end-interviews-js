@@ -58,20 +58,22 @@ const getCookie = (cname) => {
 }
 
 const validateToken = () => {
-  if (!getCookie('token')) {
-    redirect();
-  } else {
-    const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get('access_token');
+  const urlParams = new URLSearchParams(window.location.search);
+  const myParam = urlParams.get('access_token');
+  if (myParam) {
     const jwt = parseJwt(myParam);
-  
     if (jwt.app_displayname === 'apex-simple-ms-login') {
       setCookie('token', jwt, 1);
     }
-  
     window.location = appUrl;
-    document.getElementById('content').style.display = 'block';
-  }
+  };
+
+
+  if (!getCookie('token')) {
+    redirect();
+  };
+
+  document.getElementById('content').style.display = 'block';
 };
 
 const startProcess = () => {

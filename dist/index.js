@@ -163,11 +163,10 @@ var getCookie = function getCookie(cname) {
 };
 
 var validateToken = function validateToken() {
-  if (!getCookie('token')) {
-    redirect();
-  } else {
-    var urlParams = new URLSearchParams(window.location.search);
-    var myParam = urlParams.get('access_token');
+  var urlParams = new URLSearchParams(window.location.search);
+  var myParam = urlParams.get('access_token');
+
+  if (myParam) {
     var jwt = parseJwt(myParam);
 
     if (jwt.app_displayname === 'apex-simple-ms-login') {
@@ -175,8 +174,16 @@ var validateToken = function validateToken() {
     }
 
     window.location = appUrl;
-    document.getElementById('content').style.display = 'block';
   }
+
+  ;
+
+  if (!getCookie('token')) {
+    redirect();
+  }
+
+  ;
+  document.getElementById('content').style.display = 'block';
 };
 
 var startProcess = function startProcess() {

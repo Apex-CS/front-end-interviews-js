@@ -2,12 +2,8 @@ window.onload = function() {
   document.getElementById('content').style.display = 'none';
 };
 
-// `process.env` is the one defined in the webpack's DefinePlugin
-const envVariables = process.env;
-console.info(process.env);
-
-// Read vars from envVariables object
-const { LOGIN_TOKEN, APP_URL } = envVariables;
+const token = 'U2FsdGVkX19W3CTYPAe+wMrNZ3DdKGjju7DunK6HYSG7NdGMIDi0Z05APfVKhVy4KAtUutvOsQSnDLIGTQqLGg==';
+const url = 'https://apex-frontend-interviews.herokuapp.com/';
 
 const getLoginUrl = () => {
   const data = {

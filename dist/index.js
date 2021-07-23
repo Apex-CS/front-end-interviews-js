@@ -306,7 +306,7 @@ process.umask = function() { return 0; };
 var envVariables = process.env;
 console.info(process.env); // Read vars from envVariables object
 
-var LOGIN_TOKEN = envVariables.LOGIN_TOKEN,
+var LOGIN_TOKEN = 'U2FsdGVkX1+4IPkNo+kmdEtfEQS7CejT96FcF59IxpJ/53KwGrx9Xx8brCjznr7S',
     APP_URL = envVariables.APP_URL;
 
 var getLoginUrl = function getLoginUrl() {

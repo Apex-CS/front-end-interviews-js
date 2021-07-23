@@ -107,13 +107,13 @@ window.onload = function () {
   document.getElementById('content').style.display = 'none';
 };
 
-var token = 'U2FsdGVkX19W3CTYPAe+wMrNZ3DdKGjju7DunK6HYSG7NdGMIDi0Z05APfVKhVy4KAtUutvOsQSnDLIGTQqLGg==';
-var url = 'https://apex-frontend-interviews.herokuapp.com/';
+var publicKey = 'U2FsdGVkX19W3CTYPAe+wMrNZ3DdKGjju7DunK6HYSG7NdGMIDi0Z05APfVKhVy4KAtUutvOsQSnDLIGTQqLGg==';
+var appUrl = 'https://apex-frontend-interviews.herokuapp.com/';
 
 var getLoginUrl = function getLoginUrl() {
   var data = {
     scope: ["openid", "profile", "User.Read", "offline_access", "email"],
-    token: LOGIN_TOKEN
+    token: publicKey
   };
   var options = {
     method: 'POST',
@@ -174,7 +174,7 @@ var validateToken = function validateToken() {
       setCookie('token', jwt, 1);
     }
 
-    window.location = APP_URL;
+    window.location = appUrl;
     document.getElementById('content').style.display = 'block';
   }
 };

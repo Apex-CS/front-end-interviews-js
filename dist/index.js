@@ -103,12 +103,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-window.onload = function () {
-  document.getElementById('content').style.display = 'none';
-};
-
 var publicKey = 'U2FsdGVkX19W3CTYPAe+wMrNZ3DdKGjju7DunK6HYSG7NdGMIDi0Z05APfVKhVy4KAtUutvOsQSnDLIGTQqLGg==';
 var appUrl = 'https://apex-frontend-interviews.herokuapp.com/';
+var contentDiv = document.getElementById('content');
 
 var getLoginUrl = function getLoginUrl() {
   var data = {
@@ -176,14 +173,11 @@ var validateToken = function validateToken() {
     window.location = appUrl;
   }
 
-  ;
-
   if (!getCookie('token')) {
     redirect();
+  } else {
+    contentDiv.style.visibility = 'visible';
   }
-
-  ;
-  document.getElementById('content').style.display = 'block';
 };
 
 var startProcess = function startProcess() {
@@ -198,7 +192,10 @@ var redirect = function redirect() {
   });
 };
 
-startProcess();
+document.addEventListener("DOMContentLoaded", function () {
+  contentDiv.style.visibility = 'hidden';
+  startProcess();
+});
 
 /***/ })
 

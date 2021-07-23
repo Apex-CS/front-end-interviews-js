@@ -1,9 +1,6 @@
-window.onload = function() {
-  document.getElementById('content').style.display = 'none';
-};
-
 const publicKey = 'U2FsdGVkX19W3CTYPAe+wMrNZ3DdKGjju7DunK6HYSG7NdGMIDi0Z05APfVKhVy4KAtUutvOsQSnDLIGTQqLGg==';
 const appUrl = 'https://apex-frontend-interviews.herokuapp.com/';
+const contentDiv = document.getElementById('content');
 
 const getLoginUrl = () => {
   const data = {
@@ -66,14 +63,14 @@ const validateToken = () => {
       setCookie('token', jwt, 1);
     }
     window.location = appUrl;
-  };
+  }
 
 
   if (!getCookie('token')) {
     redirect();
-  };
-
-  document.getElementById('content').style.display = 'block';
+  } else {
+    contentDiv.style.visibility = 'visible';
+  }
 };
 
 const startProcess = () => {
@@ -88,4 +85,7 @@ const redirect = () => {
     });
 };
 
-startProcess();
+document.addEventListener("DOMContentLoaded", function(){
+  contentDiv.style.visibility = 'hidden';
+  startProcess();
+});

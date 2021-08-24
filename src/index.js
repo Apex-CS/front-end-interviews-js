@@ -16,7 +16,7 @@ const getLoginUrl = () => {
     body: JSON.stringify(data),
   };
   
-  const redirectLink = fetch('https://simple-sign-on.azurewebsites.net/okta/login/create', options);
+  const redirectLink = fetch('https://apex-simple-sign-on.azurewebsites.net/okta/login/create', options);
   
   return redirectLink;
 };

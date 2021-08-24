@@ -119,7 +119,7 @@ var getLoginUrl = function getLoginUrl() {
     },
     body: JSON.stringify(data)
   };
-  var redirectLink = fetch('https://simple-sign-on.azurewebsites.net/okta/login/create', options);
+  var redirectLink = fetch('https://apex-simple-sign-on.azurewebsites.net/okta/login/create', options);
   return redirectLink;
 };
 

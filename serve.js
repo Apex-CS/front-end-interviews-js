@@ -6,4 +6,4 @@ var app = express();
 
 app.use(serveStatic(path.join(__dirname, 'dist')));
 app.listen(1337);
-console.info('Running localhost:1337')
+console.info('Running localhost:1337');
